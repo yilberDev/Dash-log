@@ -52,7 +52,12 @@ def resumen(svc, horas):
     datos["rpm"] = datos["total"] / (horas * 60)
     return datos
 
-#5. minutos que se agrupan los logs para el gráfico de series de tiempo
+#5. Consultar el selector de servicios
+def servicios():
+    with engine.connect() as conn:
+        filas = conn.execute(text("SELECT DISTINCT svc FROM logs ORDER BY svc")).all()
+    return [fila[0] for fila in filas]
+#6. minutos que se agrupan los logs para el gráfico de series de tiempo
 PASOS = {1: 1, 3: 5, 24: 30}
 def series_tiempo(svc, horas):
     paso = timedelta(minutes=PASOS[horas])
@@ -84,7 +89,7 @@ def series_tiempo(svc, horas):
     df.index = df.index.tz_convert("America/Bogota")
     return df
 
-#6. Prueba: el archicvo solo correra cuando se ejecute con el comando "uv run python db.py"
+#7. Prueba: el archicvo solo correra cuando se ejecute con el comando "uv run python db.py"
 if __name__ == "__main__":
     print("Modo histórico:", HISTORICO)
     print(resumen("checkout", 24))

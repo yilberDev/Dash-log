@@ -1,0 +1,24 @@
+[project]
+name = "dashboard-logs"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "yilberDev", email = "yilbersanchez09@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "dash>=4.5.1",
+    "pandas>=3.1.1",
+    "plotly>=7.1.0",
+    "psycopg[binary]>=3.3.9",
+    "python-dotenv>=1.2.4",
+    "sqlalchemy>=2.1.9",
+]
+
+[project.scripts]
+dashboard-logs = "dashboard_logs:main"
+
+[build-system]
+requires = ["uv_build>=0.12.21,<0.13.0"]
+build-backend = "uv_build"

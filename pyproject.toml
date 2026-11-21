@@ -1,7 +1,7 @@
 [project]
 name = "dashboard-logs"
 version = "0.1.0"
-description = "Add your description here"
+description = "Dashboard en Dash para monitorear servicios a partir de la tabla logs de PostgreSQL"
 readme = "README.md"
 authors = [
     { name = "yilberDev", email = "yilbersanchez09@gmail.com" }

@@ -24,8 +24,8 @@ El tablero tiene tres selectores. El primero filtra por servicio (columna `svc`)
 1. Clonar el repositorio y entrar a la carpeta:
 
    ```bash
-   git clone <url-del-repositorio>
-   cd dashboard-logs
+   git clone https://github.com/yilberDev/Dash-log.git
+   cd Dash-log
    ```
 
 2. Instalar las dependencias:
@@ -64,7 +64,7 @@ Con `MODO_HISTORICO=1` las ventanas se cuentan desde el último registro que tie
 ## Estructura del proyecto
 
 ```
-dashboard-logs/
+Dash-log/
 ├── app.py          # la página de Dash: layout, callbacks y gráficas
 ├── db.py           # conexión a PostgreSQL y consultas de las métricas
 ├── .env.example    # plantilla de las variables de entorno

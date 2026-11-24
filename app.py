@@ -18,10 +18,11 @@ def tarjeta(titulo, valor):
 
 
 def ms(valor):
-    # si no hubo peticiones, el promedio es None, se muestra 0
+    # si no hubo peticiones no hay tiempo que mostrar
     if valor is None:
-        return "0 ms"
+        return "-"
     return f"{valor:.0f} ms"
+
 
 app.layout = html.Div([
     html.H1("Monitoreo de servicios"),
@@ -86,12 +87,14 @@ def cambiar_refresco(segundos):
 # callback para tarjetas
 @callback(
     Output("tarjetas", "children"),
+    Output("ultima-actualizacion", "children"),
     Input("servicio", "value"),
     Input("ventana", "value"),
+    Input("reloj", "n_intervals"),
 )
-def actualizar_tarjetas(svc, horas):
+def actualizar_tarjetas(svc, horas, n_intervals):
     r = db.resumen(svc, horas)
-    return [
+    tarjetas = [
         tarjeta("Tiempo de respuesta promedio", ms(r["promedio"])),
         tarjeta("p95", ms(r["p95"])),
         tarjeta("p99", ms(r["p99"])),
@@ -99,6 +102,8 @@ def actualizar_tarjetas(svc, horas):
         tarjeta("Errores 4xx", r["errores_4xx"]),
         tarjeta("Errores 5xx", r["errores_5xx"]),
     ]
+    hora = datetime.now().strftime("%H:%M:%S")
+    return tarjetas, f"Actualizado: {hora}"
 
 
 # callback para gráficas
@@ -108,8 +113,9 @@ def actualizar_tarjetas(svc, horas):
     Output("grafica-errores", "figure"),
     Input("servicio", "value"),
     Input("ventana", "value"),
+    Input("reloj", "n_intervals"),
 )
-def actualizar_graficas(svc, horas):
+def actualizar_graficas(svc, horas, n_intervals):
     df = db.series_tiempo(svc, horas)
     df = df.reset_index(names="hora")
     df = df.rename(columns={

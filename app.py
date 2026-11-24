@@ -88,7 +88,7 @@ app.layout = html.Div(id="raiz", className="tema-claro", children=html.Div([
         ]),
         html.Div([
             html.Div(id="ultima-actualizacion", className="estado"),
-            html.Button("🌙 Modo oscuro", id="boton-tema", n_clicks=0, className="boton-tema"),
+            html.Button(" Modo oscuro", id="boton-tema", n_clicks=0, className="boton-tema"),
         ], className="acciones"),
     ], className="encabezado"),
 
@@ -151,8 +151,8 @@ app.layout = html.Div(id="raiz", className="tema-claro", children=html.Div([
 )
 def cambiar_tema(clics):
     if tema_actual(clics) == "oscuro":
-        return "tema-oscuro", "☀️ Modo claro"
-    return "tema-claro", "🌙 Modo oscuro"
+        return "tema-oscuro", "Modo claro"
+    return "tema-claro", " Modo oscuro"
 
 
 # cambia cada cuánto se actualiza el tablero

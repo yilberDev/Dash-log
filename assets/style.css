@@ -1,0 +1,264 @@
+/* ---------- colores de cada tema ---------- */
+.tema-claro {
+    --fondo: #f4f6f9;
+    --tarjeta: #ffffff;
+    --borde: #e2e8f0;
+    --texto: #0f172a;
+    --texto-suave: #475569;
+    --control: #f1f5f9;
+    --hover: #ffffff;
+    --sombra: rgba(15, 23, 42, 0.05);
+}
+
+.tema-oscuro {
+    --fondo: #0f172a;
+    --tarjeta: #1e293b;
+    --borde: #334155;
+    --texto: #f1f5f9;
+    --texto-suave: #94a3b8;
+    --control: #0f172a;
+    --hover: #334155;
+    --sombra: rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- base ---------- */
+body {
+    margin: 0;
+    font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+#raiz {
+    min-height: 100vh;
+    background: var(--fondo);
+    color: var(--texto);
+    transition: background 200ms ease-out, color 200ms ease-out;
+}
+
+.contenedor {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.panel {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px var(--sombra);
+}
+
+/* ---------- encabezado ---------- */
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.encabezado h1 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.subtitulo {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+.acciones {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    padding: 6px 12px;
+    box-shadow: 0 1px 2px var(--sombra);
+    font-variant-numeric: tabular-nums;
+}
+
+.estado::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #16a34a;
+}
+
+.boton-tema {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--texto);
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    padding: 6px 14px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px var(--sombra);
+    transition: background 150ms ease-out;
+}
+
+.boton-tema:hover {
+    background: var(--control);
+}
+
+/* ---------- controles ---------- */
+.controles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 32px;
+    padding: 16px 20px;
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.titulo-control {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--texto-suave);
+}
+
+/* botones segmentados para los RadioItems */
+.botones {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: var(--control);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+
+.botones label {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--texto-suave);
+    cursor: pointer;
+    user-select: none;
+    transition: background 150ms ease-out, color 150ms ease-out;
+}
+
+.botones input[type="radio"] {
+    display: none;
+}
+
+.botones label:hover {
+    background: var(--hover);
+    color: var(--texto);
+}
+
+/* la opción elegida, sin importar cómo arme Dash el HTML */
+.botones label:has(input:checked),
+.botones input:checked + label,
+.botones input:checked + span {
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
+}
+
+/* ---------- tarjetas ---------- */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 16px;
+}
+
+.tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-top: 4px solid #94a3b8;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px var(--sombra);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tarjeta p {
+    margin: 0;
+}
+
+.tarjeta .titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto-suave);
+}
+
+.tarjeta .punto {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #94a3b8;
+    flex-shrink: 0;
+}
+
+.tarjeta .valor {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.tarjeta .ayuda {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--texto-suave);
+}
+
+.tarjeta.azul { border-top-color: #1f77b4; }
+.tarjeta.azul .punto { background: #1f77b4; }
+
+.tarjeta.naranja { border-top-color: #f59e0b; }
+.tarjeta.naranja .punto { background: #f59e0b; }
+
+.tarjeta.rojo { border-top-color: #dc2626; }
+.tarjeta.rojo .punto { background: #dc2626; }
+
+.tarjeta.verde { border-top-color: #16a34a; }
+.tarjeta.verde .punto { background: #16a34a; }
+
+/* los errores del servidor se destacan en rojo, como en el diseño */
+.tarjeta.critica .valor { color: #ef4444; }
+
+/* ---------- gráficas ---------- */
+.grafica {
+    padding: 12px;
+}
+
+.fila-graficas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 24px;
+}

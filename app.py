@@ -96,7 +96,8 @@ app.layout = html.Div(id="raiz", className="tema-claro", children=html.Div([
         html.Div([
             html.Span("Servicio", className="titulo-control"),
             dcc.Dropdown(op_servicios, value="Todos", id="servicio",
-                         clearable=False, style={"width": "180px"}),
+                         clearable=False, style={"width": "180px"},
+                         className="selector"),
         ], className="control"),
 
         html.Div([

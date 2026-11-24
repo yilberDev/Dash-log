@@ -262,3 +262,16 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
     gap: 24px;
 }
+
+/* ---------- desplegable de servicio ---------- */
+/* el texto siempre oscuro, porque Dash le pone fondo blanco */
+.selector {
+    color: #0f172a;
+}
+
+/* en modo oscuro, el desplegable toma los colores del tema */
+.tema-oscuro .selector * {
+    background-color: var(--tarjeta) !important;
+    color: var(--texto) !important;
+    border-color: var(--borde) !important;
+}
